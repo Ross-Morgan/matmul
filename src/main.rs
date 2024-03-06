@@ -19,7 +19,10 @@ impl<T: Copy + Num> Matrix<T, 2, 2> {
 
 impl<T: Copy + Num> Matrix<T, 3, 3> {
     pub fn determinant(&self) -> T {
-        self.0 * Matrix([[self.0[1][1], self.0[1][2]], [self.0[2][1], self.0[2][2]]])
+        T::zero()
+        + (self.0[0][0] * Matrix([[self.0[1][1], self.0[1][2]], [self.0[2][1], self.0[2][2]]]))
+        - (self.0[0][1] * Matrix([[self.0[1][0], self.0[1][2]], [self.0[2][0], self.0[2][2]]]))
+        + (self.0[0][2] * Matrix[[[self.0[1][0], self.0[1][1]], [self.0[2][0], self.0[2][1]]]])
     }
 }
 
